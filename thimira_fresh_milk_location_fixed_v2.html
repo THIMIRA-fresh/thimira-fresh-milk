@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thimira Fresh Milk</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    section {
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+    .product {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .whatsapp-btn, .location-btn {
+      display: block;
+      width: 100%;
+      background-color: #25D366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+    .location-btn {
+      background-color: #007bff;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Thimira Fresh Milk</h1>
+    <p>නැවුම් කිරි ඔබේ දොරට!</p>
+  </header>
+
+  <section>
+    <div class="product">
+      <h2>නිෂ්පාදන</h2>
+      <p><strong>කිරි 1L</strong> – රු. 200</p>
+    </div>
+
+    <div class="product">
+      <h2>බෙදාහැරීම</h2>
+      <p>ගොඩකවෙල හා ගොඩලවෙල අවට ප්‍රදේශ වලට පමණි.</p>
+    </div>
+
+    <button class="location-btn" onclick="getLocation()">📍 ඔබේ ස්ථානය එක් කරන්න</button>
+
+    <a id="whatsappLink" class="whatsapp-btn" href="https://wa.me/94773732700?text=මම%20Thimira%20Fresh%20Milk%20වෙතින්%201L%20කිරි%20එක්%20ඇණවුමක්%20දෙන්න%20ඕනේ" target="_blank">
+      WhatsApp ඔස්සේ ඇණවුමක් කරන්න
+    </a>
+  </section>
+
+  <footer>
+    <p>© 2025 Thimira Fresh Milk</p>
+  </footer>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          const locationUrl = `https://www.google.com/maps?q=${lat},${lon}`;
+          const whatsappText = `මම Thimira Fresh Milk වෙතින් 1L කිරි එක් ඇණවුමක් දෙන්න ඕනේ. මගේ ස්ථානය: ${locationUrl}`;
+          const whatsappLink = `https://wa.me/94773732700?text=${encodeURIComponent(whatsappText)}`;
+          document.getElementById("whatsappLink").href = whatsappLink;
+          alert("ඔබගේ ස්ථානය ඇතුළත් කර ඇත ✅");
+        }, function(error) {
+          alert("ස්ථානය ලබා ගැනීමට අසාර්ථකයි ❌");
+        });
+      } else {
+        alert("ඔබගේ browser එකෙන් GPS ලබාගැනීමට නොහැක ❌");
+      }
+    }
+  </script>
+
+</body>
+</html>
